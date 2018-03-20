@@ -22,11 +22,11 @@ Copy the saved model and paste it in the image under the folder :
 
 Start the grpc service on port 50051: 
 
-``$ docker run -d -p 50051:50051 \`
-````cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2 \`
-```python       /caicloud/serving/grpcserver.py \
+`$ docker run -d -p 50051:50051 \
+``cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2 \
+``python       /caicloud/serving/grpcserver.py \
 ``--modelpath=//caicloud/serving/examples/models/savedmodel-folder-name\
-``--maxworkers=20
+``—maxworkers=20
 `
 **Start the restful service:**
 
@@ -45,9 +45,9 @@ Write Client code:
 
 Download [caicloud.tensorflow-2.1.0](https://pypi.python.org/pypi/caicloud.tensorflow) and install it, make sure that the path of the source is correctly added to the client code so that you can make properly import in the client code:
 
-`from caicloud.clever.serving.client import restful_client`
-`from caicloud.clever.serving.client import serving_error`
-
+`from caicloud.clever.serving.client import restfulclient
+``from caicloud.clever.serving.client import servingerror
+`
 Set up client:
 
 `client = restful_client.RESTfulClient('localhost:8080')`
