@@ -4,7 +4,7 @@
 
 Download [tenserfow serving source code](https://github.com/tensorflow/serving) and run:
 
-`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `
+`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `\<br\>
 This will generate a saved model in the given directory.
 
 
@@ -12,7 +12,8 @@ This will generate a saved model in the given directory.
 
 `$ CARGO_SERVER=cargo.caicloud.io IMAGE_TAG=v1.0.2 make image`
 
-Use the image: `cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2`
+Use the image: \<br\>
+ `cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2`
 
 **Start the grpc service:**
 
@@ -22,11 +23,11 @@ Copy the saved model and paste it in the image under the folder :
 
 Start the grpc service on port 50051: 
 
-`$ docker run -d -p 50051:50051 \
-``cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2 \
-``python       /caicloud/serving/grpcserver.py \
-``--modelpath=//caicloud/serving/examples/models/savedmodel-folder-name\
-``—maxworkers=20
+`$ docker run -d -p 50051:50051 \<br>
+``cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2 \ <br>
+``python       /caicloud/serving/grpcserver.py \ <br>
+``--modelpath=//caicloud/serving/examples/models/savedmodel-folder-name\ <br>
+``—maxworkers=20 <br>
 `
 **Start the restful service:**
 
