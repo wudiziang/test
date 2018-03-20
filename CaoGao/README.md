@@ -4,7 +4,7 @@
 
 Download [tenserfow serving source code](https://github.com/tensorflow/serving) and run:
 
-`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `
+	$  python path/to/tensorflow-serving/example/mnist_saved_model.py [—training_iteration=x] [—model_version=y] export-directory 
 
 
 This will generate a saved model in the given directory.
