@@ -4,7 +4,9 @@
 
 Download [tenserfow serving source code](https://github.com/tensorflow/serving) and run:
 
-`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `\<br\>
+`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `
+
+
 This will generate a saved model in the given directory.
 
 
@@ -34,17 +36,17 @@ Start the grpc service on port 50051:
 ### Start the restful service:
 
 
-Run the image in docker:
+**Run the image in docker:**
 
 `$ docker run -ti -p 8080:8080 cargo.caicloud.io/caicloud/tensorflow-serving-restful:v1.0.2   bash`
 
-Start the service:
+**Start the service:**
 
 `# ./gateway grpc_endpoint=ip_of_your_pc:50051`_ ![](Screen%20Shot%202018-03-20%20at%2011.24.01%20AM.png)
 
 ### Build and run the client:
 
-Write Client code:
+**Write Client code:**
 
 Download [caicloud.tensorflow-2.1.0](https://pypi.python.org/pypi/caicloud.tensorflow) and install it, make sure that the path of the source is correctly added to the client code so that you can make properly import in the client code:
 
@@ -70,7 +72,7 @@ For Mnist, use its given test inputs( I used 10 images in the input):
 Then make prediction.
 
 
-Use the client code:
+**Use the client code:**
 Simply run `$ python restful_client` and the proper output should be:
 ![](Screen%20Shot%202018-03-20%20at%2011.43.54%20AM.png)
 
