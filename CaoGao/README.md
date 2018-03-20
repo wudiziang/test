@@ -10,14 +10,18 @@ Download [tenserfow serving source code](https://github.com/tensorflow/serving) 
 This will generate a saved model in the given directory.
 
 
+
 ### Build image:
+
+The image would be used later to start the prediction service.
 
 `$ CARGO_SERVER=cargo.caicloud.io IMAGE_TAG=v1.0.2 make image`
 
 
+
 ### Start the grpc service:
 
-Copy the saved model and paste it in the image under the folder : 
+Make a copy of the saved model in the image under the folder : 
 
 `//caicloud/serving/examples/models/`
 
@@ -33,6 +37,7 @@ Start the grpc service on port 50051:
 	
 	—max_workers=20 
 
+
 ### Start the restful service:
 
 
@@ -40,24 +45,29 @@ Start the grpc service on port 50051:
 
 `$ docker run -ti -p 8080:8080 cargo.caicloud.io/caicloud/tensorflow-serving-restful:v1.0.2   bash`
 
+
 **Start the service:**
 
 `# ./gateway grpc_endpoint=ip_of_your_pc:50051`_ ![](Screen%20Shot%202018-03-20%20at%2011.24.01%20AM.png)
 
+
 ### Build and run the client:
+
 
 **Write Client code:**
 
 Download [caicloud.tensorflow-2.1.0](https://pypi.python.org/pypi/caicloud.tensorflow) and install it, make sure that the path of the source is correctly added to the client code so that you can make properly import in the client code:
 
-`from caicloud.clever.serving.client import restfulclient
-``from caicloud.clever.serving.client import servingerror
-`
+	from caicloud.clever.serving.client import restful_client
+	
+	from caicloud.clever.serving.client import serving_error
+
+
 Set up client:
 
 `client = restful_client.RESTfulClient('localhost:8080')`
 
-Manage inputs:
+Manage the input:
 
 	inputs = {
 	
@@ -65,14 +75,15 @@ Manage inputs:
 	
 	}
 
-For Mnist, use its given test inputs( I used 10 images in the input):
+For Mnist-model, use its given test inputs( I used 10 images in the input):
 
 ![](Screen%20Shot%202018-03-20%20at%2011.32.52%20AM.png)
 
-Then make prediction.
+Then make prediction based on the logits.
 
 
 **Use the client code:**
+
 Simply run `$ python restful_client` and the proper output should be:
 ![](Screen%20Shot%202018-03-20%20at%2011.43.54%20AM.png)
 
