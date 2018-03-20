@@ -1,21 +1,21 @@
 # Usage of the restful API
 
-**Export saved model (Mnist-model):**
+### Export saved model (Mnist-model):
 
 Download [tenserfow serving source code](https://github.com/tensorflow/serving) and run:
 
-`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `\<br\>
+`$  python path/to/tensorflow-serving/example/mnist_saved_model [—training_iteration=x] [—model_version=y] export-directory `\</br\>
 This will generate a saved model in the given directory.
 
 
-**Build image:**
+### Build image:
 
 `$ CARGO_SERVER=cargo.caicloud.io IMAGE_TAG=v1.0.2 make image`
 
-Use the image: \<br\>
+Use the image: \</br\>
  `cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2`
 
-**Start the grpc service:**
+### Start the grpc service:
 
 Copy the saved model and paste it in the image under the folder : 
 
@@ -23,13 +23,13 @@ Copy the saved model and paste it in the image under the folder :
 
 Start the grpc service on port 50051: 
 
-`$ docker run -d -p 50051:50051 \<br>
-``cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2 \ <br>
-``python       /caicloud/serving/grpcserver.py \ <br>
-``--modelpath=//caicloud/serving/examples/models/savedmodel-folder-name\ <br>
-``—maxworkers=20 <br>
+`$ docker run -d -p 50051:50051 \</br>
+``cargo.caicloud.io/caicloud/tensorflow-serving-grpc:v1.0.2 \ </br>
+``python       /caicloud/serving/grpcserver.py \ </br>
+``--modelpath=//caicloud/serving/examples/models/savedmodel-folder-name\ </br>
+``—maxworkers=20 </br>
 `
-**Start the restful service:**
+### Start the restful service:
 
 
 Run the image in docker:
@@ -40,7 +40,7 @@ Start the service:
 
 `# ./gateway grpc_endpoint=ip_of_your_pc:50051`_ ![](Screen%20Shot%202018-03-20%20at%2011.24.01%20AM.png)
 
-**Build and run the client:**
+### Build and run the client:
 
 Write Client code:
 
@@ -55,8 +55,8 @@ Set up client:
 
 Manage inputs:
 
-`inputs = {`
-`	 ‘image': tf.contrib.util.make_tensor_proto(input_data, shape=input_data_shape),`
+`inputs = {`\</br\>
+`	 ‘image': tf.contrib.util.make_tensor_proto(input_data, shape=input_data_shape),`\</br\>
 `}`
 
 For Mnist, use its given test inputs( I used 10 images in the input):
